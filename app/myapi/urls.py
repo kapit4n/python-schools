@@ -3,7 +3,6 @@ from rest_framework import routers
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'heroes', views.HeroViewSet)
 router.register(r'projects', views.ProjectViewSet)
 router.register(r'roles', views.EmployeeRoleViewSet)
 router.register(r'employees', views.EmployeeViewSet)
