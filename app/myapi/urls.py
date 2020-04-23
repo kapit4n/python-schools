@@ -6,6 +6,7 @@ router = routers.DefaultRouter()
 router.register(r'projects', views.ProjectViewSet)
 router.register(r'roles', views.EmployeeRoleViewSet)
 router.register(r'employees', views.EmployeeViewSet)
+router.register(r'contracts', views.ContractViewSet)
 router.register(r'teams', views.TeamViewSet)
 router.register(r'members', views.TeamMemberViewSet)
 
