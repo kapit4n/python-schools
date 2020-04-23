@@ -13,7 +13,9 @@ class EmployeeRoleSerializer(serializers.HyperlinkedModelSerializer):
         model = EmployeeRole
         fields = ('name', 'description')
 
-class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
+class EmployeeSerializer(serializers.ModelSerializer):
+    role = serializers.StringRelatedField(many=False, read_only=True)
+
     class Meta:
         model = Employee
         fields = ('name', 'phone', 'role')
