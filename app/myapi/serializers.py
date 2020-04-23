@@ -11,32 +11,39 @@ from .models import TeamMember
 class EmployeeRoleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = EmployeeRole
-        fields = ('name', 'description')
+        fields = ('id', 'name', 'description')
 
-class EmployeeSerializer(serializers.ModelSerializer):
-    role = serializers.StringRelatedField(many=False, read_only=True)
+class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
+    role = EmployeeRoleSerializer(many=False, read_only=True)
 
     class Meta:
         model = Employee
-        fields = ('name', 'phone', 'role')
+        fields = ('id', 'name', 'phone', 'role')
 
 class ContractSerializer(serializers.HyperlinkedModelSerializer):
+    employee = EmployeeSerializer(many=False, read_only=True)
     class Meta:
         model = Contract
-        fields = ('salary', 'contract_date', 'employee')
+        fields = ('id', 'salary', 'contract_date', 'employee')
 
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Team
-        fields = ('name', 'description')
+        fields = ('id', 'name', 'description')
 
 class TeamMemberSerializer(serializers.HyperlinkedModelSerializer):
+    employee = EmployeeSerializer(many=False, read_only=True)
+    team = TeamSerializer(many=False, read_only=True)
+
     class Meta:
         model = TeamMember
-        fields = ('team', 'employee')
+        fields = ('id', 'team', 'employee')
 
 class ProjectSerializer(serializers.HyperlinkedModelSerializer):
+    lead = EmployeeSerializer(many=False, read_only=True)
+    team = TeamSerializer(many=False, read_only=True)
+
     class Meta:
         model = Project
-        fields = ('name', 'description', 'lead', 'team')
+        fields = ('id', 'name', 'description', 'lead', 'team')
 
