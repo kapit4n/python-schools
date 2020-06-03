@@ -19,7 +19,7 @@ POST http://localhost:8000/api-auth/login
 }
 ```
 ## create new user
-- ``` docker-compose run web python manage.py createsuperuser ```
+- ``` docker-compose run app python manage.py createsuperuser ```
 
 ## mofify models and run
 - ```docker-compose run app python manage.py makemigrations```
