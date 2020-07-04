@@ -2,7 +2,13 @@
 
 
 ## run project
-docker-compose up
+### with docker
+- `docker-compose up`
+
+### with conda
+- `conda create --name my_env python=3`
+- `conda activate my_env`
+- `python manage.py runserver`
 
 ## login
 POST http://localhost:8000/api-auth/login
